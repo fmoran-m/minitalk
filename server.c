@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "minitalk.h"
 
-int	main()
+int	main(void)
 {
 	int	id;
 
