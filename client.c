@@ -8,7 +8,7 @@ static char	*char_to_bin(char c)
 
 	j = 0;
 	i = 7;
-	str = calloc(8, sizeof(char));
+	str = calloc(9, sizeof(char));
 	while(i > -1)
 	{
 		str[i] = ((c >> j) & 1) + 48;
@@ -20,8 +20,9 @@ static char	*char_to_bin(char c)
 
 int main(int argc, char **argv)
 {
-	char	*binary;
+	char	**binary;
 	int		i;
+	int		j;
 
 	i = 0;
 	if (argc != 3)
@@ -33,16 +34,17 @@ int main(int argc, char **argv)
 	//	exit(-1);
 	while (argv[2][i])
 		i++;
-	binary = calloc((i * 8) + 1, sizeof(char)); //sustituir por ft
+	binary = calloc(i + 1, sizeof(char *)); //sustituir por ft
 	if (!binary)
 		exit(-1); //Mensaje stderror
+	j = 0;
 	i = 0;
 	while(argv[2][i])
 	{
-		binary = char_to_bin(argv[2][i]);
+		binary[j] = char_to_bin(argv[2][i]);
+		printf("%s\n", binary[j]);
+		j++;
 		i++;
 	}
-	printf("%s\n", binary);
-	free(binary);
 	return (0);
 }
